@@ -10,14 +10,55 @@ class Manufacturer(models.Model):
 
 
 class ShoeType(models.Model):
-    style = models.CharField(max_length=50)
+    SNEAKER = 'Sneaker'
+    BOOT = 'Boot'
+    SANDAL = 'Sandal'
+    DRESS = 'Dress'
+    OTHER = 'Other'
+    SHOE_TYPE_CHOICES = [
+        (SNEAKER, 'Sneaker'),
+        (BOOT, 'Boot'),
+        (SANDAL, 'Sandal'),
+        (DRESS, 'Dress'),
+        (OTHER, 'Other'),
+    ]
+    style = models.CharField(
+        max_length=7,
+        choices=SHOE_TYPE_CHOICES,
+        default=SNEAKER,
+    )
 
     def __str__(self):
         return self.style    
 
 
 class ShoeColor(models.Model):
-    color_name = models.CharField(max_length=10)
+
+    RED = 'Red'
+    ORANGE = 'Orange'
+    YELLOW = 'Yellow'
+    GREEN = 'Green'
+    BLUE = 'Blue'
+    INDIGO = 'Indigo'
+    VIOLET = 'Violet'
+    WHITE = 'White'
+    BLACK = 'Black'
+    SHOE_COLOR_CHOICES = [
+        (RED, 'Red'),
+        (ORANGE, 'Orange'),
+        (YELLOW, 'Yellow'),
+        (GREEN, 'Green'),
+        (BLUE, 'Blue'),
+        (INDIGO, 'Indigo'),
+        (VIOLET, 'Violet'),
+        (WHITE, 'White'),
+        (BLACK, 'Black'),
+    ]
+    color_name = models.CharField(
+        max_length=6,
+        choices=SHOE_COLOR_CHOICES,
+        default=BLACK,
+    )
 
     def __str__(self):
         return self.color_name
